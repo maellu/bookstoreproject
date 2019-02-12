@@ -27,12 +27,7 @@ public class Book {
 	}
 	
 	public Book() {
-		super();
-		this.title = null;
-		this.author = null;
-		this.year = 0;
-		this.isbn = null;
-		this.price = 0;
+		
 	}
 
 	public Long getId() {
@@ -79,7 +74,7 @@ public class Book {
 		return price;
 	}
 	
-	public void setPrice(long price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

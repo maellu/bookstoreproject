@@ -54,9 +54,4 @@ public class BookController {
 		return "editbook";
 	}
 	
-	@RequestMapping(value="/update/{id}", method=RequestMethod.POST)
-	public String saveupdate(@PathVariable("id") Long bookId, Book book) {
-		repository.save(book);
-		return "redirect:booklist";
-	}
 }

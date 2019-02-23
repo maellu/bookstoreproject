@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.palvelinohjelmointi.bookstoreproject.domain.Book;
 import hh.palvelinohjelmointi.bookstoreproject.domain.BookRepository;
+import hh.palvelinohjelmointi.bookstoreproject.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 	@Autowired
 	private BookRepository repository;
+	
+	@Autowired
+	private CategoryRepository crepository;
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String getBook(Model model) {
@@ -22,20 +26,22 @@ public class BookController {
 		return "bookstore";
 	}
 	
+	// kaikki kirjat listalla
 	@RequestMapping(value="/booklist")
 	public String listBook(Model model) {
 		model.addAttribute("books", repository.findAll());
-		
 		return "booklist";
 	}
 	
+	// lisää uuden kirjan
 	@RequestMapping(value="/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
-		
+		model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
 	
+	// tallentaa uuden kirjan/päivittää muuttuneet tiedot
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(Book book) {
 		repository.save(book);

@@ -26,10 +26,16 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository;
 	
+	// etusivu
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String getBook(Model model) {
-		
 		return "bookstore";
+	}
+	
+	// login
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
 	}
 	
 	// kaikki kirjat listalla
@@ -49,12 +55,6 @@ public class BookController {
 	@RequestMapping(value="/book/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
 		return repository.findById(bookId);
-	}
-	
-	//REST lisää uuden kirjan
-	@RequestMapping(value="/books", method = RequestMethod.POST)
-	public @ResponseBody Book addNewBookRest(@RequestBody Book book) {
-		return repository.save(book);
 	}
 	
 	// lisää uuden kirjan

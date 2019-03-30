@@ -26,6 +26,8 @@
 			<th>ISBN</th>
 			<th>Hinta</th>
 			<th>Kategoria</th>
+			<th></th>
+			<th></th>
 			<th sec:authorize="hasRole('ADMIN')"> </th>
 		</tr>
 			<tr th:each = "book : ${books}">
